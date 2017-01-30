@@ -8,10 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
+
+
+    @IBOutlet weak var searchTextField: UITextField!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTextField.placeholder = "Search movies, actors, directors..."
         // Do any additional setup after loading the view, typically from a nib.
     }
 

@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Gophertainment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Gophertainment" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXo-qJ-D1t">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXo-qJ-D1t" userLabel="searchTextField">
                                 <rect key="frame" x="16" y="28" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -38,7 +38,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cWB-OE-r3N" userLabel="IndividualCellView">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="resultCellPoster" id="cWB-OE-r3N" userLabel="IndividualCellView" customClass="ResultCellView" customModule="Gophertainment" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="164" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -48,7 +48,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7c-rk-HDm" userLabel="PosterImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="164" height="260"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPR-fT-uOH" userLabel="PosterBasicInfo">
+                                                <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPR-fT-uOH" userLabel="PosterBasicInfo">
                                                     <rect key="frame" x="0.0" y="180" width="164" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozw-vF-xoq" userLabel="TitleLabel">
@@ -95,6 +95,11 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="OPR-fT-uOH" secondAttribute="bottom" constant="-8" id="t8E-ct-cui"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="f7c-rk-HDm" secondAttribute="bottom" constant="-8" id="wPp-s8-8wm"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="resultPosterImage" destination="f7c-rk-HDm" id="98D-og-wAd"/>
+                                            <outlet property="resultTitleLabel" destination="Ozw-vF-xoq" id="ctW-gJ-pxZ"/>
+                                            <outlet property="resultYearLabel" destination="L6G-Cz-d4T" id="fbP-Oc-KLc"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -110,6 +115,9 @@
                             <constraint firstItem="EXo-qJ-D1t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="vcl-EN-HbP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchTextField" destination="EXo-qJ-D1t" id="JLj-cj-Zj3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
