@@ -15,6 +15,7 @@
 		27C94D221E3F113F0052B951 /* GophertainmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D211E3F113F0052B951 /* GophertainmentTests.swift */; };
 		27C94D2D1E3F113F0052B951 /* GophertainmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D2C1E3F113F0052B951 /* GophertainmentUITests.swift */; };
 		27C94D3E1E3F15030052B951 /* ResultCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D3D1E3F15030052B951 /* ResultCellView.swift */; };
+		27C94D421E404FB80052B951 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D411E404FB80052B951 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		27C94D2C1E3F113F0052B951 /* GophertainmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GophertainmentUITests.swift; sourceTree = "<group>"; };
 		27C94D2E1E3F113F0052B951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C94D3D1E3F15030052B951 /* ResultCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCellView.swift; sourceTree = "<group>"; };
+		27C94D411E404FB80052B951 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		27C94D0B1E3F113F0052B951 /* Gophertainment */ = {
 			isa = PBXGroup;
 			children = (
+				27C94D401E404F470052B951 /* Helpers */,
 				27C94D3F1E3F29210052B951 /* Network */,
 				27C94D3C1E3F14DB0052B951 /* Models */,
 				27C94D3B1E3F14D50052B951 /* Controllers */,
@@ -158,6 +161,14 @@
 			children = (
 			);
 			name = Network;
+			sourceTree = "<group>";
+		};
+		27C94D401E404F470052B951 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				27C94D411E404FB80052B951 /* Extensions.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +311,7 @@
 				27C94D0F1E3F113F0052B951 /* HomeViewController.swift in Sources */,
 				27C94D3E1E3F15030052B951 /* ResultCellView.swift in Sources */,
 				27C94D0D1E3F113F0052B951 /* AppDelegate.swift in Sources */,
+				27C94D421E404FB80052B951 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +562,7 @@
 				27C94D331E3F113F0052B951 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27C94D341E3F113F0052B951 /* Build configuration list for PBXNativeTarget "GophertainmentTests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +571,7 @@
 				27C94D361E3F113F0052B951 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27C94D371E3F113F0052B951 /* Build configuration list for PBXNativeTarget "GophertainmentUITests" */ = {
 			isa = XCConfigurationList;
@@ -566,6 +580,7 @@
 				27C94D391E3F113F0052B951 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

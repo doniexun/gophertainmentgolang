@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let posterCell = searchResultCollectionView.dequeueReusableCell(withReuseIdentifier: "resultCellPoster", for: indexPath) as! ResultCellView
-        posterCell.resultPosterImage.backgroundColor = getRandomColor()
+        posterCell.resultPosterImage.backgroundColor = UIColor.getRandomColor()
         posterCell.resultTitleLabel.text = posters[indexPath.row]
         return posterCell
     }
@@ -54,12 +54,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         print("Selected poster: \(indexPath.row)")
     }
 
-    func getRandomColor() -> UIColor {
-        let randomRed:CGFloat = CGFloat(drand48())
-        let randomGreen:CGFloat = CGFloat(drand48())
-        let randomBlue:CGFloat = CGFloat(drand48())
-        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
-    }
+
     
 
 
