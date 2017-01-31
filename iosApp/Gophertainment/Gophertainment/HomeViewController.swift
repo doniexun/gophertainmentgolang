@@ -8,14 +8,26 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
 
+    //MARK: IBOutlet Views
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchResultCollectionView: UICollectionView!
+
+    var posters = ["One", "Two", "Three", "Four", "Five"]
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //MARK: Delagates
+        searchTextField.delegate = self
+        searchResultCollectionView.delegate = self
+        searchResultCollectionView.dataSource = self
+
+
+
         searchTextField.placeholder = "Search movies, actors, directors..."
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -24,6 +36,49 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+
+    //MARK: Collection View Methods
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return posters.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let posterCell = searchResultCollectionView.dequeueReusableCell(withReuseIdentifier: "resultCellPoster", for: indexPath) as! ResultCellView
+        posterCell.resultPosterImage.backgroundColor = getRandomColor()
+        posterCell.resultTitleLabel.text = posters[indexPath.row]
+        return posterCell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected poster: \(indexPath.row)")
+    }
+
+    func getRandomColor() -> UIColor {
+        let randomRed:CGFloat = CGFloat(drand48())
+        let randomGreen:CGFloat = CGFloat(drand48())
+        let randomBlue:CGFloat = CGFloat(drand48())
+        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+    }
+    
+
+
+    //MARK: IBOutlet Actions
+
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide Keyboard
+        textField.resignFirstResponder()
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if(textField.text != nil) {
+            print(textField.text!)
+        }
+    }
+
+
 
 
 }

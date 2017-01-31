@@ -99,6 +99,7 @@
 		27C94D0B1E3F113F0052B951 /* Gophertainment */ = {
 			isa = PBXGroup;
 			children = (
+				27C94D3F1E3F29210052B951 /* Network */,
 				27C94D3C1E3F14DB0052B951 /* Models */,
 				27C94D3B1E3F14D50052B951 /* Controllers */,
 				27C94D3A1E3F14CD0052B951 /* Views */,
@@ -150,6 +151,13 @@
 			children = (
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		27C94D3F1E3F29210052B951 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
