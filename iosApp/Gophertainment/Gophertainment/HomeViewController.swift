@@ -26,10 +26,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         searchResultCollectionView.delegate = self
         searchResultCollectionView.dataSource = self
 
-
-
+        // Search Text Field Customization
         searchTextField.placeholder = "Search movies, actors, directors..."
-        // Do any additional setup after loading the view, typically from a nib.
+        searchTextField.borderStyle = UITextBorderStyle(rawValue: 0)!
     }
 
     override func didReceiveMemoryWarning() {

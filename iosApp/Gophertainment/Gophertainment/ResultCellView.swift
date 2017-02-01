@@ -15,10 +15,17 @@ class ResultCellView: UICollectionViewCell {
     @IBOutlet weak var resultYearLabel: UILabel!
 
 
+
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        self.layer.cornerRadius = 5
+    }
+
+
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
+//
 //    }
-//    
 //    required init?(coder aDecoder: NSCoder) {
 //        fatalError("init(coder:) has not been implemented")
 //    }
