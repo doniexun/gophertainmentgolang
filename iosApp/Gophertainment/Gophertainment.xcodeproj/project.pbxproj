@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273432D51E44155A00867DD6 /* BaseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273432D41E44155A00867DD6 /* BaseDataModel.swift */; };
+		273432D71E44222500867DD6 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273432D61E44222500867DD6 /* MovieData.swift */; };
+		273432D91E44222F00867DD6 /* PersonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273432D81E44222F00867DD6 /* PersonData.swift */; };
+		273432DB1E44223900867DD6 /* TvShowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273432DA1E44223900867DD6 /* TvShowData.swift */; };
 		27C94D0D1E3F113F0052B951 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D0C1E3F113F0052B951 /* AppDelegate.swift */; };
 		27C94D0F1E3F113F0052B951 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D0E1E3F113F0052B951 /* HomeViewController.swift */; };
 		27C94D121E3F113F0052B951 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C94D101E3F113F0052B951 /* Main.storyboard */; };
@@ -36,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		273432D41E44155A00867DD6 /* BaseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataModel.swift; sourceTree = "<group>"; };
+		273432D61E44222500867DD6 /* MovieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		273432D81E44222F00867DD6 /* PersonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonData.swift; sourceTree = "<group>"; };
+		273432DA1E44223900867DD6 /* TvShowData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvShowData.swift; sourceTree = "<group>"; };
 		27C94D091E3F113F0052B951 /* Gophertainment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gophertainment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C94D0C1E3F113F0052B951 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27C94D0E1E3F113F0052B951 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +160,10 @@
 		27C94D3C1E3F14DB0052B951 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				273432D41E44155A00867DD6 /* BaseDataModel.swift */,
+				273432D61E44222500867DD6 /* MovieData.swift */,
+				273432D81E44222F00867DD6 /* PersonData.swift */,
+				273432DA1E44223900867DD6 /* TvShowData.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -308,9 +320,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273432DB1E44223900867DD6 /* TvShowData.swift in Sources */,
+				273432D71E44222500867DD6 /* MovieData.swift in Sources */,
+				273432D51E44155A00867DD6 /* BaseDataModel.swift in Sources */,
 				27C94D0F1E3F113F0052B951 /* HomeViewController.swift in Sources */,
 				27C94D3E1E3F15030052B951 /* ResultCellView.swift in Sources */,
 				27C94D0D1E3F113F0052B951 /* AppDelegate.swift in Sources */,
+				273432D91E44222F00867DD6 /* PersonData.swift in Sources */,
 				27C94D421E404FB80052B951 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

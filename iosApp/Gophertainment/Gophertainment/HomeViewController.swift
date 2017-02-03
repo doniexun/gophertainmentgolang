@@ -15,11 +15,19 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchResultCollectionView: UICollectionView!
 
+    var baseSearchResult: [BaseDataModel]? {
+        didSet {
+
+        }
+    }
+
     var posters = ["One", "Two", "Three", "Four", "Five"]
+//    var movieSearchResult: MovieData
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchSearchResult(userSearchStr: "007")
 
         //MARK: Delagates
         searchTextField.delegate = self
@@ -29,6 +37,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         // Search Text Field Customization
         searchTextField.placeholder = "Search movies, actors, directors..."
         searchTextField.borderStyle = UITextBorderStyle(rawValue: 0)!
+
+
+
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,13 +51,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
     //MARK: Collection View Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posters.count
+        return baseSearchResult?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let posterCell = searchResultCollectionView.dequeueReusableCell(withReuseIdentifier: "resultCellPoster", for: indexPath) as! ResultCellView
         posterCell.resultPosterImage.backgroundColor = UIColor.getRandomColor()
-        posterCell.resultTitleLabel.text = posters[indexPath.row]
+        posterCell.resultTitleLabel.text = baseSearchResult?[indexPath.row].itemName
+        posterCell.resultYearLabel.text = baseSearchResult?[indexPath.row].originDate
         return posterCell
     }
 
@@ -54,7 +67,54 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     }
 
 
-    
+    //MARK: Fetch Search Result
+    func fetchSearchResult(userSearchStr: String) {
+
+        let searchURL = URL(string: "https://movieproductiondetails.appspot.com/search/getsearchresult")
+        let userSearchString = ["userSearchString" : "\(userSearchStr)"]
+
+        let session = URLSession.shared
+        let request = NSMutableURLRequest(url: searchURL!)
+        request.httpMethod = "POST"
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: userSearchString, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        //HTTP Headers
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+
+
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+            guard error == nil else { return }
+            guard let data = data else { return }
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
+                    if let result = json["results"]! as? [Any] {
+                        self.baseSearchResult = [BaseDataModel]()
+                        for val in result {
+                            if let single = val as? Dictionary<String, Any> {
+                                let individualResult = BaseDataModel()
+                                individualResult.itemId = single["id"] as! Int?
+                                individualResult.itemName = single["title"] as! String?
+                                individualResult.originDate = single["release_date"] as! String?
+                                individualResult.overViewOrBio = single["overview"] as! String?
+                                self.baseSearchResult?.append(individualResult)
+                                print("\(individualResult.itemName ?? "No Name Found") : \(individualResult.originDate ?? "Date Not Found")")
+                            }
+                        }
+                    }
+                    self.searchResultCollectionView.reloadData()
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
+    }
+
+
 
 
     //MARK: IBOutlet Actions
