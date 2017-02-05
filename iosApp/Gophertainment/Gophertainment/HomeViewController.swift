@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchSearchResult(userSearchStr: "007")
+//        fetchSearchResult(userSearchStr: "007")
 
         //MARK: Delagates
         searchTextField.delegate = self
@@ -94,10 +94,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                             if let single = val as? Dictionary<String, Any> {
                                 let individualResult = BaseDataModel()
                                 individualResult.itemId = single["id"] as! Int?
-                                individualResult.itemName = single["title"] as! String?
+                                individualResult.itemName = single["title"] as? String ?? single["name"] as? String ?? "No Title/Name"
                                 individualResult.originDate = single["release_date"] as! String?
                                 individualResult.overViewOrBio = single["overview"] as! String?
-                                individualResult.posterPath = single["poster_path"] as? String ?? "No Path"
+                                individualResult.posterPath = single["poster_path"] as? String ?? single["profile_path"] as? String ?? "No Path"
                                 self.baseSearchResult?.append(individualResult)
                                 print("\(individualResult.itemName ?? "No Name Found") : \(individualResult.posterPath ?? "Not Found")")
                             }
@@ -126,6 +126,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         if(textField.text != nil) {
+            fetchSearchResult(userSearchStr: textField.text!)
             print(textField.text!)
         }
     }

@@ -51,19 +51,19 @@
                                                 <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPR-fT-uOH" userLabel="PosterBasicInfo">
                                                     <rect key="frame" x="0.0" y="180" width="164" height="80"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozw-vF-xoq" userLabel="TitleLabel">
-                                                            <rect key="frame" x="0.0" y="0.0" width="164" height="60"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozw-vF-xoq" userLabel="TitleLabel">
+                                                            <rect key="frame" x="7" y="0.0" width="151" height="40"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="60" id="YPw-TZ-AvO"/>
+                                                                <constraint firstAttribute="height" constant="40" id="YPw-TZ-AvO"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6G-Cz-d4T" userLabel="YearLabel">
-                                                            <rect key="frame" x="0.0" y="60" width="164" height="20"/>
+                                                            <rect key="frame" x="7" y="40" width="151" height="40"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="fUf-yc-yEy"/>
+                                                                <constraint firstAttribute="height" constant="40" id="fUf-yc-yEy"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -72,12 +72,15 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="L6G-Cz-d4T" firstAttribute="leading" secondItem="OPR-fT-uOH" secondAttribute="leading" id="6BE-sB-Jm7"/>
-                                                        <constraint firstItem="Ozw-vF-xoq" firstAttribute="top" secondItem="OPR-fT-uOH" secondAttribute="top" id="CoD-14-CDW"/>
-                                                        <constraint firstItem="Ozw-vF-xoq" firstAttribute="leading" secondItem="OPR-fT-uOH" secondAttribute="leading" id="DMk-iO-AFD"/>
-                                                        <constraint firstAttribute="bottom" secondItem="L6G-Cz-d4T" secondAttribute="bottom" id="M7o-ad-fJ8"/>
-                                                        <constraint firstItem="L6G-Cz-d4T" firstAttribute="centerX" secondItem="Ozw-vF-xoq" secondAttribute="centerX" id="ORA-ef-fid"/>
-                                                        <constraint firstItem="Ozw-vF-xoq" firstAttribute="centerX" secondItem="OPR-fT-uOH" secondAttribute="centerX" id="eFW-Ad-wNl"/>
+                                                        <constraint firstItem="Ozw-vF-xoq" firstAttribute="centerX" secondItem="OPR-fT-uOH" secondAttribute="centerX" id="1Lt-q3-yA6"/>
+                                                        <constraint firstItem="L6G-Cz-d4T" firstAttribute="centerX" secondItem="Ozw-vF-xoq" secondAttribute="centerX" id="BvX-wd-Cq2"/>
+                                                        <constraint firstAttribute="bottom" secondItem="L6G-Cz-d4T" secondAttribute="bottom" id="Cy7-Gt-tLE"/>
+                                                        <constraint firstItem="Ozw-vF-xoq" firstAttribute="top" secondItem="OPR-fT-uOH" secondAttribute="top" id="EgG-oh-cx9"/>
+                                                        <constraint firstItem="L6G-Cz-d4T" firstAttribute="leading" secondItem="OPR-fT-uOH" secondAttribute="leading" constant="7" id="ICh-Z1-5Bw"/>
+                                                        <constraint firstItem="L6G-Cz-d4T" firstAttribute="top" secondItem="Ozw-vF-xoq" secondAttribute="bottom" id="U2o-lm-6j0"/>
+                                                        <constraint firstItem="Ozw-vF-xoq" firstAttribute="leading" secondItem="OPR-fT-uOH" secondAttribute="leading" constant="7" id="ZRv-Uq-tMF"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ozw-vF-xoq" secondAttribute="trailing" constant="6" id="mxY-Ew-RLq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="L6G-Cz-d4T" secondAttribute="trailing" constant="6" id="r3G-dV-KlS"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

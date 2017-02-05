@@ -33,13 +33,14 @@ class ResultCellView: UICollectionViewCell {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.layer.cornerRadius = 5
+
     }
 
     func setPosterImage() {
         if let poster = posterResult?.posterPath {
             if (poster != "No Path") {
                 let imageUrl = URL(string: imageLink + poster)
-                print(imageUrl)
+                print(imageUrl ?? "No Image Url Path Found")
                 URLSession.shared.dataTask(with: imageUrl!, completionHandler: { (data, response, error) in
                     if error != nil {
                         print(error!)
