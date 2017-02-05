@@ -103,7 +103,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                             }
                         }
                     }
-                    self.searchResultCollectionView.reloadData()
+
+                    DispatchQueue.main.async {
+                        self.searchResultCollectionView.reloadData()
+                    }
+
                 }
             } catch let error {
                 print(error.localizedDescription)

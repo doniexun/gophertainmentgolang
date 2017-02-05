@@ -46,7 +46,10 @@ class ResultCellView: UICollectionViewCell {
                         print(error!)
                         return
                     }
-                    self.resultPosterImage.image = UIImage(data: data!)
+                    DispatchQueue.main.async {
+                        self.resultPosterImage.image = UIImage(data: data!)
+                    }
+
 
                 }).resume()
             }
