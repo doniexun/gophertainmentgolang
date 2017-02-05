@@ -19,7 +19,7 @@ class BaseDataModel: NSObject {
 
     var itemName: String?
     var overViewOrBio: String?
-    var originDate: String?
+    var originDate: Date?
     var mediaType: String?
     
     var posterPath: String?

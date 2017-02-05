@@ -19,9 +19,12 @@ class ResultCellView: UICollectionViewCell {
     var posterResult: BaseDataModel? {
         didSet {
             resultTitleLabel.text = posterResult?.itemName
-            resultYearLabel.text = posterResult?.originDate
+            resultYearLabel.text = yearDateOfPoster(yearString: (posterResult?.originDate!.description)!)
             setPosterImage()
             resultPosterImage.image = UIImage(named: (posterResult?.posterPath)!)
+
+        
+
 
         }
     }
@@ -34,6 +37,12 @@ class ResultCellView: UICollectionViewCell {
         super.draw(rect)
         self.layer.cornerRadius = 5
 
+    }
+
+
+    func yearDateOfPoster(yearString: String) -> String {
+        let index = yearString.index(yearString.startIndex, offsetBy: 4)
+        return (yearString.substring(to: index) != "0001") ? yearString.substring(to: index) : ""
     }
 
     func setPosterImage() {

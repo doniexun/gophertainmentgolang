@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        fetchSearchResult(userSearchStr: "007")
+
 
         //MARK: Delagates
         searchTextField.delegate = self
@@ -62,6 +62,19 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         print("Selected poster: \(indexPath.row)")
     }
 
+    func dateFromString(dateStr: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let s = dateFormatter.date(from: dateStr)
+        if s == nil {
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd"
+            let ndf = df.date(from: "0001-01-01")
+            return ndf!
+        }
+        return s!
+    }
+
 
 
     //MARK: Fetch Search Result
@@ -95,15 +108,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                                 let individualResult = BaseDataModel()
                                 individualResult.itemId = single["id"] as! Int?
                                 individualResult.itemName = single["title"] as? String ?? single["name"] as? String ?? "No Title/Name"
-                                individualResult.originDate = single["release_date"] as! String?
-                                individualResult.overViewOrBio = single["overview"] as! String?
+                                individualResult.originDate = self.dateFromString(dateStr:(single["release_date"] as? String)!)
+                                individualResult.overViewOrBio = single["overview"] as? String ?? "No Description"
                                 individualResult.posterPath = single["poster_path"] as? String ?? single["profile_path"] as? String ?? "No Path"
                                 self.baseSearchResult?.append(individualResult)
-                                print("\(individualResult.itemName ?? "No Name Found") : \(individualResult.posterPath ?? "Not Found")")
+                                print("\(individualResult.itemName ?? "No Name Found") : \(individualResult.originDate)")
                             }
                         }
                     }
-
+                    self.baseSearchResult?.sort(by: { $0.originDate?.compare($1.originDate!) == .orderedDescending})
                     DispatchQueue.main.async {
                         self.searchResultCollectionView.reloadData()
                     }
