@@ -14,11 +14,42 @@ class ResultCellView: UICollectionViewCell {
     @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var resultYearLabel: UILabel!
 
+    let imageLink: String = "https://image.tmdb.org/t/p/w300"
 
+    var posterResult: BaseDataModel? {
+        didSet {
+            resultTitleLabel.text = posterResult?.itemName
+            resultYearLabel.text = posterResult?.originDate
+            setPosterImage()
+            resultPosterImage.image = UIImage(named: (posterResult?.posterPath)!)
+
+        }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.layer.cornerRadius = 5
+    }
+
+    func setPosterImage() {
+        if let poster = posterResult?.posterPath {
+            if (poster != "No Path") {
+                let imageUrl = URL(string: imageLink + poster)
+                print(imageUrl)
+                URLSession.shared.dataTask(with: imageUrl!, completionHandler: { (data, response, error) in
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+                    self.resultPosterImage.image = UIImage(data: data!)
+
+                }).resume()
+            }
+        }
     }
 
 

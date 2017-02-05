@@ -15,11 +15,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchResultCollectionView: UICollectionView!
 
-    var baseSearchResult: [BaseDataModel]? {
-        didSet {
-
-        }
-    }
+    var baseSearchResult: [BaseDataModel]?
+    
 
     var posters = ["One", "Two", "Three", "Four", "Five"]
 //    var movieSearchResult: MovieData
@@ -57,14 +54,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let posterCell = searchResultCollectionView.dequeueReusableCell(withReuseIdentifier: "resultCellPoster", for: indexPath) as! ResultCellView
         posterCell.resultPosterImage.backgroundColor = UIColor.getRandomColor()
-        posterCell.resultTitleLabel.text = baseSearchResult?[indexPath.row].itemName
-        posterCell.resultYearLabel.text = baseSearchResult?[indexPath.row].originDate
+        posterCell.posterResult = baseSearchResult?[indexPath.row]
         return posterCell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected poster: \(indexPath.row)")
     }
+
 
 
     //MARK: Fetch Search Result
@@ -100,8 +97,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                                 individualResult.itemName = single["title"] as! String?
                                 individualResult.originDate = single["release_date"] as! String?
                                 individualResult.overViewOrBio = single["overview"] as! String?
+                                individualResult.posterPath = single["poster_path"] as? String ?? "No Path"
                                 self.baseSearchResult?.append(individualResult)
-                                print("\(individualResult.itemName ?? "No Name Found") : \(individualResult.originDate ?? "Date Not Found")")
+                                print("\(individualResult.itemName ?? "No Name Found") : \(individualResult.posterPath ?? "Not Found")")
                             }
                         }
                     }
