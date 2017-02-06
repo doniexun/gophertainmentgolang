@@ -11,10 +11,11 @@
 		273432D71E44222500867DD6 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273432D61E44222500867DD6 /* MovieData.swift */; };
 		273432D91E44222F00867DD6 /* PersonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273432D81E44222F00867DD6 /* PersonData.swift */; };
 		273432DB1E44223900867DD6 /* TvShowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273432DA1E44223900867DD6 /* TvShowData.swift */; };
+		273432DF1E47D01600867DD6 /* PosterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273432DE1E47D01600867DD6 /* PosterDetailViewController.swift */; };
+		273432E41E4808F400867DD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 273432E31E4808F400867DD6 /* Assets.xcassets */; };
 		27C94D0D1E3F113F0052B951 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D0C1E3F113F0052B951 /* AppDelegate.swift */; };
 		27C94D0F1E3F113F0052B951 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D0E1E3F113F0052B951 /* HomeViewController.swift */; };
 		27C94D121E3F113F0052B951 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C94D101E3F113F0052B951 /* Main.storyboard */; };
-		27C94D141E3F113F0052B951 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C94D131E3F113F0052B951 /* Assets.xcassets */; };
 		27C94D171E3F113F0052B951 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C94D151E3F113F0052B951 /* LaunchScreen.storyboard */; };
 		27C94D221E3F113F0052B951 /* GophertainmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D211E3F113F0052B951 /* GophertainmentTests.swift */; };
 		27C94D2D1E3F113F0052B951 /* GophertainmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C94D2C1E3F113F0052B951 /* GophertainmentUITests.swift */; };
@@ -44,11 +45,12 @@
 		273432D61E44222500867DD6 /* MovieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
 		273432D81E44222F00867DD6 /* PersonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonData.swift; sourceTree = "<group>"; };
 		273432DA1E44223900867DD6 /* TvShowData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvShowData.swift; sourceTree = "<group>"; };
+		273432DE1E47D01600867DD6 /* PosterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterDetailViewController.swift; sourceTree = "<group>"; };
+		273432E31E4808F400867DD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		27C94D091E3F113F0052B951 /* Gophertainment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gophertainment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C94D0C1E3F113F0052B951 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27C94D0E1E3F113F0052B951 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		27C94D111E3F113F0052B951 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		27C94D131E3F113F0052B951 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27C94D161E3F113F0052B951 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27C94D181E3F113F0052B951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C94D1D1E3F113F0052B951 /* GophertainmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GophertainmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 		27C94D0B1E3F113F0052B951 /* Gophertainment */ = {
 			isa = PBXGroup;
 			children = (
+				273432E31E4808F400867DD6 /* Assets.xcassets */,
 				27C94D401E404F470052B951 /* Helpers */,
 				27C94D3F1E3F29210052B951 /* Network */,
 				27C94D3C1E3F14DB0052B951 /* Models */,
@@ -116,7 +119,6 @@
 				27C94D3A1E3F14CD0052B951 /* Views */,
 				27C94D0C1E3F113F0052B951 /* AppDelegate.swift */,
 				27C94D101E3F113F0052B951 /* Main.storyboard */,
-				27C94D131E3F113F0052B951 /* Assets.xcassets */,
 				27C94D151E3F113F0052B951 /* LaunchScreen.storyboard */,
 				27C94D181E3F113F0052B951 /* Info.plist */,
 			);
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				27C94D0E1E3F113F0052B951 /* HomeViewController.swift */,
+				273432DE1E47D01600867DD6 /* PosterDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -294,7 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27C94D171E3F113F0052B951 /* LaunchScreen.storyboard in Resources */,
-				27C94D141E3F113F0052B951 /* Assets.xcassets in Resources */,
+				273432E41E4808F400867DD6 /* Assets.xcassets in Resources */,
 				27C94D121E3F113F0052B951 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +325,7 @@
 			files = (
 				273432DB1E44223900867DD6 /* TvShowData.swift in Sources */,
 				273432D71E44222500867DD6 /* MovieData.swift in Sources */,
+				273432DF1E47D01600867DD6 /* PosterDetailViewController.swift in Sources */,
 				273432D51E44155A00867DD6 /* BaseDataModel.swift in Sources */,
 				27C94D0F1E3F113F0052B951 /* HomeViewController.swift in Sources */,
 				27C94D3E1E3F15030052B951 /* ResultCellView.swift in Sources */,

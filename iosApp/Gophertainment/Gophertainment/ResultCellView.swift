@@ -10,9 +10,13 @@ import UIKit
 
 class ResultCellView: UICollectionViewCell {
 
+    @IBOutlet weak var posterInfoBgView: UIView!
     @IBOutlet weak var resultPosterImage: UIImageView!
     @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var resultYearLabel: UILabel!
+
+    var image: UIImage!
+    var blurView = UIImageView()
 
     let imageLink: String = "https://image.tmdb.org/t/p/w300"
 
@@ -21,11 +25,6 @@ class ResultCellView: UICollectionViewCell {
             resultTitleLabel.text = posterResult?.itemName
             resultYearLabel.text = yearDateOfPoster(yearString: (posterResult?.originDate!.description)!)
             setPosterImage()
-            resultPosterImage.image = UIImage(named: (posterResult?.posterPath)!)
-
-        
-
-
         }
     }
 
@@ -37,9 +36,31 @@ class ResultCellView: UICollectionViewCell {
         super.draw(rect)
         self.layer.cornerRadius = 5
 
+
     }
 
+//    func snapShotImage() -> UIImage {
+//        UIGraphicsBeginImageContext(self.posterInfoBgView.bounds.size)
+//        if let context = UIGraphicsGetCurrentContext() {
+//            self.layer.render(in: context)
+//            let image = UIGraphicsGetImageFromCurrentImageContext()
+//            UIGraphicsEndImageContext()
+//            return image!
+//        }
+//        return UIImage()
+//    }
 
+//    func blurImage(image: UIImage) {
+//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = self.posterInfoBgView.bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        self.posterInfoBgView.insertSubview(blurEffectView, at: 0)
+//    }
+
+
+
+    // See http://stackoverflow.com/a/39677331 for substring
     func yearDateOfPoster(yearString: String) -> String {
         let index = yearString.index(yearString.startIndex, offsetBy: 4)
         return (yearString.substring(to: index) != "0001") ? yearString.substring(to: index) : ""
@@ -48,31 +69,11 @@ class ResultCellView: UICollectionViewCell {
     func setPosterImage() {
         if let poster = posterResult?.posterPath {
             if (poster != "No Path") {
-                let imageUrl = URL(string: imageLink + poster)
-                print(imageUrl ?? "No Image Url Path Found")
-                URLSession.shared.dataTask(with: imageUrl!, completionHandler: { (data, response, error) in
-                    if error != nil {
-                        print(error!)
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        self.resultPosterImage.image = UIImage(data: data!)
-                    }
-
-
-                }).resume()
+                let fullImageLink: String = poster
+                self.resultPosterImage.loadImageUsingUrl(urlString: fullImageLink)
+//                let image = self.snapShotImage()
+//                self.blurImage(image: image)
             }
         }
     }
-
-
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//
-//    }
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-
-
 }
