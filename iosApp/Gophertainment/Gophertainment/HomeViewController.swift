@@ -29,6 +29,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         // Search Text Field Customization
         searchTextField.placeholder = "Search movies, actors, directors..."
         searchTextField.borderStyle = UITextBorderStyle(rawValue: 0)!
+//        searchTextField.layer.borderWidth = 1.0
+//        searchTextField.layer.cornerRadius = 20
+//        searchTextField.layer.borderColor = UIColor(red: 244/255, green: 81/255, blue: 30/255, alpha: 0.3).cgColor
 
     }
 
@@ -117,6 +120,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                                 individualResult.posterPath = single["poster_path"] as? String ?? single["profile_path"] as? String ?? "No Path"
                                 individualResult.backDropPath = single["backdrop_path"] as? String ?? "No Path"
                                 individualResult.mediaType = single["media_type"] as? String ?? "No Type"
+                                individualResult.voteAvg = single["vote_average"] as? Double ?? 0.0
                                 self.baseSearchResult?.append(individualResult)
                                 print("\(individualResult.itemName ?? "No Name Found") : \(individualResult.originDate?.description) \(individualResult.mediaType ?? "No Media Type")")
                             }
