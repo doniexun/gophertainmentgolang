@@ -28,6 +28,9 @@ class PosterDetailViewController: UIViewController {
     @IBOutlet weak var detailRevenueLabel: UILabel!
     @IBOutlet weak var detailAverageRatingLabel: UILabel!
     @IBOutlet weak var detailOverviewBioText: UITextView!
+    @IBOutlet weak var detailRunTimeLabel: UILabel!
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +44,9 @@ class PosterDetailViewController: UIViewController {
 
         self.detailTitleLabel.text = _details?.itemName
         self.detailOverviewBioText.text = _details?.overViewOrBio
-        self.detailAverageRatingLabel.text = _details?.voteAvg?.description
+        if let rating = _details?.voteAvg {
+            self.detailAverageRatingLabel.text = "\(rating) \u{2606}" // star character
+        }
     }
 
     func personDetailSuppress() {
@@ -99,6 +104,7 @@ class PosterDetailViewController: UIViewController {
                     self._details.budget = json["budget"] as? Double ?? 0.0
                     self._details.revenue = json["revenue"] as? Double ?? 0.0
                     self._details.tagLine = json["tagline"] as? String ?? " "
+                    self._details.runtime = json["runtime"] as? Int ?? 0
                     if self._details?.mediaType == "person" {
                         self._details.overViewOrBio = json["biography"] as? String ?? "No Biography Found"
                     }
@@ -113,6 +119,9 @@ class PosterDetailViewController: UIViewController {
                         }
                         if self._details?.mediaType == "person" {
                             self.detailOverviewBioText.text = self._details?.overViewOrBio
+                        }
+                        if let runtime = self._details?.runtime {
+                            self.detailRunTimeLabel.text = "\(runtime) min"
                         }
                     }
                 }
