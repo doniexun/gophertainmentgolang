@@ -4,9 +4,11 @@ outputting available information about them.
 
 | Basic output |
 | ------------ |
-| Overview     |
-| Budget       |
-
+| Overview |
+| Budget |
+| Revenue |
+| Actors |
+| Crew members |
 
 ##Backend
 
