@@ -17,9 +17,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
     var baseSearchResult: [BaseDataModel]?
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         //MARK: Delagates
         searchTextField.delegate = self
@@ -29,9 +29,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         // Search Text Field Customization
         searchTextField.placeholder = "Search movies, actors, directors..."
         searchTextField.borderStyle = UITextBorderStyle(rawValue: 0)!
-//        searchTextField.layer.borderWidth = 1.0
-//        searchTextField.layer.cornerRadius = 20
-//        searchTextField.layer.borderColor = UIColor(red: 244/255, green: 81/255, blue: 30/255, alpha: 0.3).cgColor
 
     }
 
@@ -56,16 +53,43 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected poster: \(indexPath.row)")
-        performSegue(withIdentifier: "PosterDetailVC", sender: baseSearchResult?[indexPath.row])
+        performSegue(withIdentifier: "DetailContentPageVC", sender: baseSearchResult?[indexPath.row])
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PosterDetailVC" {
-            let destination = segue.destination as! PosterDetailViewController
-            let cellDetails = sender as! BaseDataModel
-            destination._details = cellDetails
+//        if segue.identifier == "PosterDetailVC" {
+//            let destination = segue.destination as! PosterDetailViewController
+//            let cellDetails = sender as! BaseDataModel
+//            destination._details = cellDetails
+//        }
+        if segue.identifier == "DetailContentPageVC" {
+            let detailDestPageVC =  segue.destination as! DetailPageViewController
+            let dataToPageVC = sender as! BaseDataModel
+            detailDestPageVC.detailBaseData = dataToPageVC
         }
     }
+
+
+    //MARK: IBOutlet Actions
+
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide Keyboard
+        textField.resignFirstResponder()
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if(textField.text != nil) {
+            print(textField.text!)
+            fetchSearchResult(userSearchStr: textField.text!)
+        }
+    }
+
+
+
+
+
 
     //MARK: String Date to Actual Date
     // See http://stackoverflow.com/a/33278425 for details
@@ -101,9 +125,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
         //HTTP Headers
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        taskForSearchString(req: request as URLRequest, session: session)
+    }
 
 
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+    func taskForSearchString(req: URLRequest, session: URLSession) {
+        let task = session.dataTask(with: req as URLRequest, completionHandler: { data, response, error in
             guard error == nil else { return }
             guard let data = data else { return }
             do {
@@ -113,16 +140,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
                         for val in result {
                             if let single = val as? Dictionary<String, Any> {
                                 let individualResult = BaseDataModel()
-                                individualResult.itemId = single["id"] as! Int?
-                                individualResult.itemName = single["title"] as? String ?? single["name"] as? String ?? "No Title/Name"
-                                individualResult.originDate = self.dateFromString(dateStr:(single["release_date"] as? String ?? "0001-01-01")!)
-                                individualResult.overViewOrBio = single["overview"] as? String ?? "No Description"
-                                individualResult.posterPath = single["poster_path"] as? String ?? single["profile_path"] as? String ?? "No Path"
-                                individualResult.backDropPath = single["backdrop_path"] as? String ?? "No Path"
-                                individualResult.mediaType = single["media_type"] as? String ?? "No Type"
-                                individualResult.voteAvg = single["vote_average"] as? Double ?? 0.0
-                                self.baseSearchResult?.append(individualResult)
-                                print("\(individualResult.itemName ?? "No Name Found") : \(individualResult.originDate?.description) \(individualResult.mediaType ?? "No Media Type")")
+                                self.setBaseDataModelFromAsyncCall(individualResult: individualResult, single: single)
                             }
                         }
                     }
@@ -142,25 +160,23 @@ class HomeViewController: UIViewController, UITextFieldDelegate, UICollectionVie
 
 
 
-
-    //MARK: IBOutlet Actions
-
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Hide Keyboard
-        textField.resignFirstResponder()
-        return true
+    func setBaseDataModelFromAsyncCall(individualResult: BaseDataModel, single: Dictionary<String, Any>) {
+        individualResult.itemId = single["id"] as! Int?
+        individualResult.itemName = single["title"] as? String ?? single["name"] as? String ?? "No Title/Name"
+        individualResult.originDate = self.dateFromString(dateStr:(single["release_date"] as? String ?? "0001-01-01")!)
+        individualResult.overViewOrBio = single["overview"] as? String ?? "No Description"
+        individualResult.posterPath = single["poster_path"] as? String ?? single["profile_path"] as? String ?? "No Path"
+        individualResult.backDropPath = single["backdrop_path"] as? String ?? "No Path"
+        individualResult.mediaType = single["media_type"] as? String ?? "No Type"
+        individualResult.voteAvg = single["vote_average"] as? Double ?? 0.0
+        self.baseSearchResult?.append(individualResult)
+//        print("\(individualResult.itemName ?? "No Name Found") : \(individualResult.originDate?.description) \(individualResult.mediaType ?? "No Media Type")")
     }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if(textField.text != nil) {
-            print(textField.text!)
-            fetchSearchResult(userSearchStr: textField.text!)
-        }
-    }
-
-
-
 
 }
+
+
+
+
+
 

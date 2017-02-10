@@ -62,8 +62,15 @@ class BaseDataModel: NSObject {
     var firstAirDate: String?
 
     var homePageLink: String? // website link to the official site
-    var cast: [String: String]? // character, name, profile pic
-    var crew: [String: String]?
+
+    var castName: [String]? // actor name, 
+    var castCharacterName: [String]? // character name
+    var castImageLink: [String]?
+
+    var crewName: [String]? // crew name,
+    var crewTitle: [String]? // title, eg director, producer
+    var creImageLink: [String]?
+
     var genres: [String]?
 
 

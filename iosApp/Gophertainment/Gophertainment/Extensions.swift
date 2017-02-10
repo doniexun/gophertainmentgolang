@@ -28,7 +28,7 @@ extension UIImageView
     func loadImageUsingUrl(urlString: String) {
         let imageLink: String = "https://image.tmdb.org/t/p/w300"
         let imageUrl = URL(string: imageLink + urlString)
-        print(imageUrl ?? "No Image Url Path Found")
+//        print(imageUrl ?? "No Image Url Path Found")
         if urlString != "No Path" {
             URLSession.shared.dataTask(with: imageUrl!, completionHandler: { (data, response, error) in
                 if error != nil {
@@ -46,6 +46,7 @@ extension UIImageView
 
     }
 }
+
 
 extension UIView {
     func getSnapshotImage() -> UIImage {

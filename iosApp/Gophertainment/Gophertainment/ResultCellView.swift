@@ -15,10 +15,6 @@ class ResultCellView: UICollectionViewCell {
     @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var resultYearLabel: UILabel!
 
-    var image: UIImage!
-    var blurView = UIImageView()
-
-    let imageLink: String = "https://image.tmdb.org/t/p/w300"
 
     var posterResult: BaseDataModel? {
         didSet {
@@ -35,8 +31,6 @@ class ResultCellView: UICollectionViewCell {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.layer.cornerRadius = 5
-
-
     }
 
 //    func snapShotImage() -> UIImage {
@@ -71,8 +65,6 @@ class ResultCellView: UICollectionViewCell {
             if (poster != "No Path") {
                 let fullImageLink: String = poster
                 self.resultPosterImage.loadImageUsingUrl(urlString: fullImageLink)
-//                let image = self.snapShotImage()
-//                self.blurImage(image: image)
             }
         }
     }
