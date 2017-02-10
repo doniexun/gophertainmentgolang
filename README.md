@@ -12,6 +12,16 @@ outputting available information about them.
 
 ##Backend
 
+####Currently
+* Node/Express
+* The Movie DB Api
+
+####Future
+* Golang
+* Google Datastore
+* Google Storage for image
+* Cron Job for updating collections list after x number of months!?
+
 
 ##Mobile
 
