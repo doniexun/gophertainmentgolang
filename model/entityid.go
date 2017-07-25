@@ -1,19 +1,29 @@
 package model
 
 type EntityId struct {
-	id int
-	nameTitle string
+	ID            int    `json:"id"`
+	MediaType     string `json:"media_type,omitempty"`
+	Title         string `json:"title,omitempty"`
+	Name          string `json:"name,omitempty"`
+	OriginalName  string `json:"original_name,omitempty"`
+	OriginalTitle string `json:"original_title,omitempty"`
+	Overview      string `json:"overview,omitempty"`
+	Biography     string `json:"biography,omitempty"`
+	Popularity    string `json:"popularity,omitempty"`
 }
 
-
 type EntityPosterPath struct {
-	poster_path string
+	PosterPath string `json:"poster_path,omitempty"`
 }
 
 type EntityBackdropPath struct {
-	backdrop_path string
+	BackdropPath string `json:"backdrop_path,omitempty"`
 }
 
 type EntityProfilePath struct {
-	profile_path string
+	ProfilePath string `json:"profile_path,omitempty"`
+}
+
+type EntityHomePage struct {
+	Homepage string `json:"homepage,omitempty"`
 }

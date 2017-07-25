@@ -2,11 +2,10 @@ package model
 
 type Actors struct {
 	EntityId
-	biography string
-	birthday string
-	deathday string
-	gender int
-	homepage string
-	place_of_birth string
-	profile_path string
+	Birthday     string `json:"birthday,omitempty"`
+	Deathday     string `json:"deathday,omitempty"`
+	Gender       int    `json:"gender,omitempty"`
+	Homepage     string `json:"homepage,omitempty"`
+	PlaceOfBirth string `json:"place_of_birth,omitempty"`
+	ProfilePath  string `json:"profile_path,omitempty"`
 }
