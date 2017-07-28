@@ -8,10 +8,10 @@ import (
 )
 
 func CastSearchHanlder(w http.ResponseWriter, req *http.Request) {
-	userSearchString := req.PostForm.Get("userstring")
-	fmt.Println("Query Params: ", userSearchString)
+	userPersonId := req.PostForm.Get("userpersonid")
+	fmt.Println("Query Params: ", userPersonId)
 
-	castSearchurl := "https://api.themoviedb.org/3/movie"
+	castSearchurl := "https://api.themoviedb.org/3/person/" + userPersonId
 	searchReq, _ := http.NewRequest("GET", castSearchurl, nil)
 	searchReq.Header.Set("Content-Type", "application/json;charset=utf-8")
 

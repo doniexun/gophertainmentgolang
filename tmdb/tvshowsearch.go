@@ -13,7 +13,7 @@ import (
 func TVShowSearchHanlder(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	tvshowSearchId := req.Form.Get("tvshowsearchid")
-	fmt.Println("Query Params: ", tvshowSearchId)
+	fmt.Println("TV Search Query Params: ", tvshowSearchId)
 
 	tvshowSearchurl := "https://api.themoviedb.org/3/tv/" + tvshowSearchId
 	searchReq, _ := http.NewRequest("GET", tvshowSearchurl, nil)

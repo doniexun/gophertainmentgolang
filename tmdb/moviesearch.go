@@ -13,7 +13,7 @@ import (
 func MovieSearchHanlder(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	movieSearchString := req.Form.Get("moviesearchid")
-	fmt.Println("Query Params: ", movieSearchString)
+	fmt.Println("Movie Search Query Params: ", movieSearchString)
 
 	movieSearchurl := "https://api.themoviedb.org/3/movie/" + movieSearchString
 	searchReq, _ := http.NewRequest("GET", movieSearchurl, nil)
