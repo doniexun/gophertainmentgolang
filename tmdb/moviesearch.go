@@ -1,19 +1,18 @@
 package tmdb
 
 import (
+	"bitbucket.org/daksh_sharma/gophertainment/model"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
-	"log"
-	"encoding/json"
-	"bitbucket.org/daksh_sharma/gophertainment/model"
 )
 
 func MovieSearchHanlder(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	movieSearchString := req.Form.Get("moviesearchid")
-	fmt.Println("Movie Search Query Params: ", movieSearchString)
 
 	movieSearchurl := "https://api.themoviedb.org/3/movie/" + movieSearchString
 	searchReq, _ := http.NewRequest("GET", movieSearchurl, nil)

@@ -1,15 +1,18 @@
 package tmdb
 
 import (
+	"bitbucket.org/daksh_sharma/gophertainment/model"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 )
 
 func CastSearchHanlder(w http.ResponseWriter, req *http.Request) {
-	userPersonId := req.PostForm.Get("userpersonid")
-	fmt.Println("Query Params: ", userPersonId)
+	req.ParseForm()
+	userPersonId := req.Form.Get("personsearchid")
 
 	castSearchurl := "https://api.themoviedb.org/3/person/" + userPersonId
 	searchReq, _ := http.NewRequest("GET", castSearchurl, nil)
@@ -31,7 +34,15 @@ func CastSearchHanlder(w http.ResponseWriter, req *http.Request) {
 	defer res.Body.Close()
 
 	body, _ := ioutil.ReadAll(res.Body)
-	fmt.Println(res)
-	fmt.Println(string(body))
-	fmt.Fprint(w, string(body))
+	var resData model.Actors
+	err := json.Unmarshal([]byte(body), &resData)
+	if err != nil {
+		log.Fatalln("ERROR: Unable to UnMarshal")
+	}
+	json, err := json.Marshal(resData)
+	if err != nil {
+		log.Fatalln("ERROR: Unable to Marshal resData")
+	}
+
+	w.Write(json)
 }

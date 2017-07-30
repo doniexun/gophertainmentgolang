@@ -16,6 +16,7 @@ func main() {
 	http.HandleFunc("/search", tmdb.MultiSearchHanlder)
 	http.HandleFunc("/movie", tmdb.MovieSearchHanlder)
 	http.HandleFunc("/tvshow", tmdb.TVShowSearchHanlder)
+	http.HandleFunc("/person", tmdb.CastSearchHanlder)
 
 	log.Print("Listening on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))

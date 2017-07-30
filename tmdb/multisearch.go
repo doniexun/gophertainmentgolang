@@ -1,18 +1,17 @@
 package tmdb
 
 import (
-	"io/ioutil"
-	"net/http"
-	"os"
-	"log"
 	"bitbucket.org/daksh_sharma/gophertainment/model"
 	"encoding/json"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
 )
 
 func MultiSearchHanlder(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	userSearchString := req.Form.Get("usersearchstring")
-	//fmt.Println("Multi-Search Query Params: ", userSearchString)
 
 	multiSearchUrl := "https://api.themoviedb.org/3/search/multi"
 	searchReq, _ := http.NewRequest("GET", multiSearchUrl, nil)
