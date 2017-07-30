@@ -3,7 +3,6 @@ package tmdb
 import (
 	"bitbucket.org/daksh_sharma/gophertainment/model"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
